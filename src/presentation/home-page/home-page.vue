@@ -1,8 +1,6 @@
 <template>
-    <div class="container-home">
-        <header class="nav">
-            <h1 class="logo">Gerenciador de Estoque</h1>
-        </header>
+    <div class="container-home"> 
+        <Header />
         
         <main class="presentation">
             <div class="presentation__img">
@@ -22,56 +20,26 @@
     </div>
 </template>
 
+<script setup>
+import Header from '../../components/header/header.vue';
+
+</script>
+
 <style lang="scss">
 @import './home-page.scss';
 @import '../../styles/color.scss';
 @import '../../styles/fonts.scss';
 @import '../../styles/general.scss';
 
-//component header
-.nav {
-    width: 100vw;
-    height: 110px;
-
-    background-color: $color-primary;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .logo {
-        font-size: 40px;
-        font-weight: 700;
-
-        color: $color-white;
-    }
-}
-
-//component header
-
 .presentation {
     width: 100vw;
     height: 100vh;
 
-    margin-top: 30px;
-    margin-left: -16%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 8rem;
     align-items: center;
     color: $color-primary;
-    padding-left: 20rem;
-    position: relative;
-
-    &__login {
-        width: 25vw;
-        height: 50vh;
-    }
-
-    &__img {
-        width: 25vw;
-        height: 50vh;
-    }
 }
 
 //componente login
