@@ -1,7 +1,7 @@
 <template>
-    <div class="container-home"> 
+    <div class="container-home">
         <Header />
-        
+
         <main class="presentation">
             <div class="presentation__img">
                 <img src="../../images/estoque.png" alt="estoque-homepage">
@@ -17,11 +17,14 @@
             </div>
 
         </main>
+
+        <Footer />
     </div>
 </template>
 
 <script setup>
-import Header from '../../components/header/header.vue';
+import Header from '../../components/header.vue';
+import Footer from '../../components/footer.vue';
 
 </script>
 
@@ -37,7 +40,7 @@ import Header from '../../components/header/header.vue';
 
     display: flex;
     justify-content: center;
-    gap: 8rem;
+    gap: 18rem;
     align-items: center;
     color: $color-primary;
 }
@@ -94,4 +97,62 @@ button {
 }
 
 //componente login
+
+@media (max-width: 980px) {
+
+    .presentation {
+        gap: 10rem;
+    }
+
+    footer,
+    header {
+        width: 100vw;
+        height: 100px;
+    }
+}
+
+@media (max-width: 850px) {
+
+    html,
+    .presentation {
+        font-size: 80%;
+        gap: 6rem;
+    }
+
+    img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .form {
+        width: 300px;
+    }
+}
+
+@media (max-width: 725px) {
+
+    .presentation {
+        gap: 3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    img {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 350px) {
+    img {
+        width: 230px;
+        height: 230px;
+    }
+
+    .form {
+        width: 280px;
+        height: 270px;
+    }
+}
+
 </style>
