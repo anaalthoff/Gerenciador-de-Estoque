@@ -5,12 +5,11 @@
         <main class="presentation">
             <div class="presentation__img">
                 <img src="../../images/estoque.png" alt="estoque-homepage">
-                <!-- https://www.pngegg.com/pt/png-oubsq/download?height=340 -->
             </div>
             <div class="presentation__login">
-                <form class="form">
+                <form class="form" @submit.prevent="login">
                     <h1>Login</h1>
-                    <input type="text" name="email" placeholder="Digite seu e-mail">
+                    <input type="text" name="username" placeholder="Digite seu e-mail">
                     <input type="password" name="password" placeholder="Digite sua senha">
                     <button>Entrar</button>
                 </form>
@@ -23,8 +22,44 @@
 </template>
 
 <script setup>
-import Header from '../../components/header.vue';
-import Footer from '../../components/footer.vue';
+import Header from '../../components/assets/header.vue';
+import Footer from '../../components/assets/footer.vue';
+import axios from 'axios';  //biblioteca do vue
+import { useRouter } from 'vue-router';
+
+// autenticação do usuário
+
+const login = async (event) => {
+    const username = event.target[0].value
+    const password = event.target[1].value
+
+    console.log(event)
+
+    const response = await axios({
+        method: "post",
+        url: "http://localhost:80/auth/login",
+        data: {
+            "username": username,
+            "password": password,
+        }
+    })
+
+    submitHandler(response)
+    console.log(response)
+}
+
+// Direcionamento para a próxima página, se usuário autenticado
+// Se e-mail ou senha incorretos, retornar para página inical de login
+
+const router = useRouter()
+
+const submitHandler = async (response) => {
+    if (response.status == 200) {
+        router.push({ path: '/main' })
+    } else if(response.status == 406) {
+        alert('Email e/ou senha incorretos')
+    }
+}
 
 </script>
 
@@ -154,5 +189,4 @@ button {
         height: 270px;
     }
 }
-
 </style>

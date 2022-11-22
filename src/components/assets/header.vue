@@ -5,7 +5,7 @@
 </template>
 
 <style lang="scss">
-@import '../styles/color.scss';
+@import '../../styles/color.scss';
 
 .nav {
     width: 100vw;
